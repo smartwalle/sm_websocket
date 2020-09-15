@@ -5,7 +5,7 @@ WebSocket client for Dart.
 ## Getting Started
 
 ```dart
-import 'package:sm_websocket/websocket.dart';
+import 'package:sm_websocket/sm_websocket.dart';
 
 WebSocket ws = WebSocket();
 
