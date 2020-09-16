@@ -4,7 +4,7 @@ import 'dart:io' as io;
 
 import 'package:sm_websocket/sm_websocket.dart';
 
-class WebSocket {
+class WebSocket implements IWebSocket {
   io.WebSocket _socket;
 
   OnSuccess _onSuccess;

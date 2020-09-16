@@ -10,7 +10,7 @@ enum _OpenStatus {
   Failed, // 建立连接失败
 }
 
-class WebSocket {
+class WebSocket implements IWebSocket {
   html.WebSocket _socket;
 
   OnSuccess _onSuccess;
