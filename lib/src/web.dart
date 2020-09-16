@@ -2,7 +2,7 @@ library sm_websocket;
 
 import 'dart:html' as html;
 
-import 'package:sm_websocket/src/stub.dart';
+import 'package:sm_websocket/sm_websocket.dart';
 
 enum _OpenStatus {
   Pending, // 等待建立连接

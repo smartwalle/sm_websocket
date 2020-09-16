@@ -2,7 +2,7 @@ library sm_websocket;
 
 import 'dart:io' as io;
 
-import 'package:sm_websocket/src/stub.dart';
+import 'package:sm_websocket/sm_websocket.dart';
 
 class WebSocket {
   io.WebSocket _socket;
