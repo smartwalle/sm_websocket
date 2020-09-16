@@ -86,4 +86,9 @@ class WebSocket implements IWebSocket {
   send(String data) {
     this._socket?.sendString(data);
   }
+
+  /// 获取连接状态.
+  WebSocketState state() {
+    return WebSocketState.values[this._socket?.readyState ?? 3];
+  }
 }

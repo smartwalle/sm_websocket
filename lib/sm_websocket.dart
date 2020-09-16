@@ -26,4 +26,21 @@ abstract class IWebSocket {
 
   /// 发送数据.
   send(String data);
+
+  /// 获取连接状态.
+  WebSocketState state();
+}
+
+enum WebSocketState {
+  /// 连接中
+  Connecting,
+
+  /// 已连接
+  Open,
+
+  /// 关闭中
+  Closing,
+
+  /// 已关闭
+  Closed,
 }
