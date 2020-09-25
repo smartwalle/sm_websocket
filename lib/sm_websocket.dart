@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 export 'package:sm_websocket/src/web.dart' if (dart.library.io) 'package:sm_websocket/src/io.dart';
 
 typedef OnSuccess = void Function();
@@ -26,6 +28,8 @@ abstract class IWebSocket {
 
   /// 发送数据.
   send(String data);
+
+  sendUint8List(Uint8List data);
 
   /// 获取连接状态.
   WebSocketState state();

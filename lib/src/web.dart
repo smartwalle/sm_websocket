@@ -1,6 +1,7 @@
 library sm_websocket;
 
 import 'dart:html' as html;
+import 'dart:typed_data';
 
 import 'package:sm_websocket/sm_websocket.dart';
 
@@ -85,6 +86,10 @@ class WebSocket implements IWebSocket {
   /// 发送数据.
   send(String data) {
     this._socket?.sendString(data);
+  }
+
+  sendUint8List(Uint8List data) {
+    this._socket?.sendByteBuffer(data.buffer);
   }
 
   /// 获取连接状态.
