@@ -1,6 +1,6 @@
 name: sm_websocket
 description: WebSocket client for Dart.
-version: 0.0.4
+version: 0.0.5
 homepage: https://github.com/smartwalle/sm_websocket
 
 environment:
