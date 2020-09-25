@@ -47,6 +47,7 @@ class WebSocket implements IWebSocket {
 
     this._openStatus = _OpenStatus.Pending;
     this._socket = html.WebSocket(url);
+    this._socket.binaryType = "arraybuffer";
 
     this._socket.onOpen.first.then((value) {
       this._openStatus = _OpenStatus.Success;
@@ -72,7 +73,12 @@ class WebSocket implements IWebSocket {
 
     this._socket.onMessage.listen((event) {
       if (_onMessage != null) {
-        _onMessage(event.data);
+        if (event.data is ByteBuffer) {
+          var buf = event.data as ByteBuffer;
+          _onMessage(buf.asUint8List());
+        } else {
+          _onMessage(event.data);
+        }
       }
     });
   }
