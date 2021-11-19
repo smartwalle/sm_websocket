@@ -12,14 +12,14 @@ enum _OpenStatus {
 }
 
 class WebSocket implements IWebSocket {
-  html.WebSocket _socket;
+  html.WebSocket? _socket;
 
-  OnSuccess _onSuccess;
-  OnFail _onFail;
-  OnClose _onClose;
-  OnMessage _onMessage;
+  OnSuccess? _onSuccess;
+  OnFail? _onFail;
+  OnClose? _onClose;
+  OnMessage? _onMessage;
 
-  _OpenStatus _openStatus;
+  _OpenStatus? _openStatus;
 
   /// 建立 WebSocket 连接成功的回调.
   onSuccess(OnSuccess callback) {
@@ -47,37 +47,37 @@ class WebSocket implements IWebSocket {
 
     this._openStatus = _OpenStatus.Pending;
     this._socket = html.WebSocket(url);
-    this._socket.binaryType = "arraybuffer";
+    this._socket!.binaryType = "arraybuffer";
 
-    this._socket.onOpen.first.then((value) {
+    this._socket!.onOpen.first.then((value) {
       this._openStatus = _OpenStatus.Success;
       if (_onSuccess != null) {
-        _onSuccess();
+        _onSuccess!();
       }
     });
 
-    this._socket.onError.first.then((value) {
+    this._socket!.onError.first.then((value) {
       this._openStatus = _OpenStatus.Failed;
       if (_onFail != null) {
-        _onFail();
+        _onFail!();
       }
       this._socket = null;
     });
 
-    this._socket.onClose.first.then((value) {
+    this._socket!.onClose.first.then((value) {
       if (_onClose != null && this._openStatus != _OpenStatus.Failed) {
-        _onClose();
+        _onClose!();
       }
       this._socket = null;
     });
 
-    this._socket.onMessage.listen((event) {
+    this._socket!.onMessage.listen((event) {
       if (_onMessage != null) {
         if (event.data is ByteBuffer) {
           var buf = event.data as ByteBuffer;
-          _onMessage(buf.asUint8List());
+          _onMessage!(buf.asUint8List());
         } else {
-          _onMessage(event.data);
+          _onMessage!(event.data);
         }
       }
     });

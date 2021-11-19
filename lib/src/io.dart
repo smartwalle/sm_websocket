@@ -6,12 +6,12 @@ import 'dart:typed_data';
 import 'package:sm_websocket/sm_websocket.dart';
 
 class WebSocket implements IWebSocket {
-  io.WebSocket _socket;
+  io.WebSocket? _socket;
 
-  OnSuccess _onSuccess;
-  OnFail _onFail;
-  OnClose _onClose;
-  OnMessage _onMessage;
+  OnSuccess? _onSuccess;
+  OnFail? _onFail;
+  OnClose? _onClose;
+  OnMessage? _onMessage;
 
   /// 建立 WebSocket 连接成功的回调.
   onSuccess(OnSuccess callback) {
@@ -44,25 +44,25 @@ class WebSocket implements IWebSocket {
     try {
       this._socket = await io.WebSocket.connect(url);
 
-      if (this._socket.readyState == io.WebSocket.open) {
+      if (this._socket!.readyState == io.WebSocket.open) {
         if (_onSuccess != null) {
-          _onSuccess();
+          _onSuccess!();
         }
       }
 
-      this._socket.listen((event) {
+      this._socket!.listen((event) {
         if (_onMessage != null) {
-          _onMessage(event);
+          _onMessage!(event);
         }
       }, onDone: () {
         if (_onClose != null) {
-          _onClose();
+          _onClose!();
         }
         this._socket = null;
       });
     } catch (e) {
       if (_onFail != null) {
-        _onFail();
+        _onFail!();
       }
       this._socket = null;
     }
