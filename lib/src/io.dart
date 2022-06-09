@@ -9,7 +9,7 @@ class WebSocket implements IWebSocket {
   io.WebSocket? _socket;
 
   OnSuccess? _onSuccess;
-  OnFail? _onFail;
+  OnFailed? _onFailed;
   OnClose? _onClose;
   OnMessage? _onMessage;
 
@@ -19,8 +19,8 @@ class WebSocket implements IWebSocket {
   }
 
   /// 建立 WebSocket 连接失败的回调.
-  onFail(OnFail callback) {
-    _onFail = callback;
+  onFailed(OnFailed callback) {
+    _onFailed = callback;
   }
 
   /// WebSocket 关闭的回调.
@@ -61,8 +61,8 @@ class WebSocket implements IWebSocket {
         this._socket = null;
       });
     } catch (e) {
-      if (_onFail != null) {
-        _onFail!();
+      if (_onFailed != null) {
+        _onFailed!();
       }
       this._socket = null;
     }
