@@ -27,7 +27,7 @@ class WebSocket implements IWebSocket {
   }
 
   /// 建立 WebSocket 连接失败的回调.
-  onFailed(OnFailed callback) {
+  onFailure(OnFailed callback) {
     _onFailed = callback;
   }
 

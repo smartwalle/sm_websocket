@@ -13,7 +13,7 @@ ws.onSuccess(() {
 print("连接成功");
 });
 
-ws.onFailed(() {
+ws.onFailure(() {
 print("连接失败");
 });
 

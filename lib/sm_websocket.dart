@@ -12,7 +12,7 @@ abstract class IWebSocket {
   onSuccess(OnSuccess callback);
 
   /// 建立 WebSocket 连接失败的回调.
-  onFailed(OnFailed callback);
+  onFailure(OnFailed callback);
 
   /// WebSocket 关闭的回调.
   onClose(OnClose callback);
