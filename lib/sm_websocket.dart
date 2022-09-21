@@ -3,7 +3,7 @@ import 'dart:typed_data';
 export 'package:sm_websocket/src/web.dart' if (dart.library.io) 'package:sm_websocket/src/io.dart';
 
 typedef OnSuccess = void Function();
-typedef OnFailed = void Function();
+typedef OnFailure = void Function();
 typedef OnClose = void Function();
 typedef OnMessage = void Function(dynamic data);
 
@@ -12,7 +12,7 @@ abstract class IWebSocket {
   onSuccess(OnSuccess callback);
 
   /// 建立 WebSocket 连接失败的回调.
-  onFailure(OnFailed callback);
+  onFailure(OnFailure callback);
 
   /// WebSocket 关闭的回调.
   onClose(OnClose callback);
